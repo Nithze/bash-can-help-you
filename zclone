@@ -1,0 +1,23 @@
+#!/bin/bash
+
+GREEN='\033[0;32m'
+NC='\033[0m' # No Color
+
+username="Username"
+token="Token"
+
+printf "${GREEN}URL HTTPS 🚀: ${NC}"
+read -p "" repo_url
+
+host=$(echo "$repo_url" | awk -F/ '{print $3}')
+
+repository=$(echo "$repo_url" | sed -n "s/https:\/\/$host\///p")
+
+if git clone "https://$username:$token@$host/$repository"; then
+    echo " 󱐋 Cloning Succes in the directory 󱐋"
+else
+    echo "Failed"
+    exit 1
+fi
+
+pwd

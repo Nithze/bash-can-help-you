@@ -1,0 +1,19 @@
+#!/bin/bash
+
+# lower-left pane
+tmux split-window -v
+tmux resize-pane -D 10
+tmux send-keys "ls -a" C-m
+
+# lower-right pane
+tmux split-window -h
+tmux resize-pane -L 20
+tmux send-keys "ll" C-m
+
+tmux split-window -h
+# tmux send-keys "ll" C-m
+
+tmux select-pane -U
+tmux send-keys "vi" C-m
+
+
